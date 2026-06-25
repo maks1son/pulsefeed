@@ -1052,12 +1052,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 /* ════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .float-card--tl { left: -10px; }
-  .float-card--tr { right: -10px; }
-  .float-card--bl { display: none; }
-  .float-card--br { display: none; }
+/* Decorative floating cards only have room on generous desktop widths.
+   Below ~1200px they crowd the centered hero headline, so hide them. */
+@media (max-width: 1200px) {
+  .float-card { display: none; }
+}
 
+@media (max-width: 1024px) {
   .cv-split { grid-template-columns: 1fr; gap: 24px; max-width: 480px; }
   .cv-vs { margin: 0 auto; }
 
@@ -1072,8 +1073,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 @media (max-width: 768px) {
   .nav-links, .nav-cta { display: none; }
   .nav-burger { display: flex; }
-
-  .float-card--tl, .float-card--tr { display: none; }
 
   .hero-screenshot { padding: 0 0; }
 
