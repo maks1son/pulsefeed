@@ -1,17 +1,9 @@
 (() => {
-  const ready = (fn) => {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", fn, { once: true });
-      return;
-    }
-    fn();
-  };
-
-  ready(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+  const init = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealItems = document.querySelectorAll(".reveal");
-    if (reducedMotion || !("IntersectionObserver" in window)) {
+
+    if (reduce || !("IntersectionObserver" in window)) {
       revealItems.forEach((item) => item.classList.add("is-visible"));
     } else {
       const observer = new IntersectionObserver(
@@ -22,56 +14,37 @@
             observer.unobserve(entry.target);
           });
         },
-        { rootMargin: "0px 0px -12% 0px", threshold: 0.18 }
+        { threshold: 0.16, rootMargin: "0px 0px -10% 0px" }
       );
       revealItems.forEach((item) => observer.observe(item));
     }
 
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector("#nav-menu");
-    const menuLinks = menu ? menu.querySelectorAll("a") : [];
+    const button = document.querySelector(".menu-button");
+    const menu = document.querySelector("#mobile-nav");
+    if (!button || !menu) return;
 
-    const closeMenu = () => {
-      if (!toggle || !menu) return;
+    const close = () => {
       menu.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-expanded", "false");
     };
 
-    if (toggle && menu) {
-      toggle.addEventListener("click", () => {
-        const open = menu.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", String(open));
-      });
-
-      menuLinks.forEach((link) => {
-        link.addEventListener("click", closeMenu);
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenu();
-      });
-    }
-
-    document.querySelectorAll(".faq-item").forEach((item) => {
-      const button = item.querySelector(".faq-question");
-      const answer = item.querySelector(".faq-answer");
-      if (!button || !answer) return;
-
-      button.addEventListener("click", () => {
-        const isOpen = button.getAttribute("aria-expanded") === "true";
-
-        document.querySelectorAll(".faq-question").forEach((otherButton) => {
-          otherButton.setAttribute("aria-expanded", "false");
-        });
-        document.querySelectorAll(".faq-answer").forEach((otherAnswer) => {
-          otherAnswer.style.maxHeight = "0px";
-        });
-
-        if (!isOpen) {
-          button.setAttribute("aria-expanded", "true");
-          answer.style.maxHeight = `${answer.scrollHeight}px`;
-        }
-      });
+    button.addEventListener("click", () => {
+      const open = menu.classList.toggle("is-open");
+      button.setAttribute("aria-expanded", String(open));
     });
-  });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", close);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
 })();
