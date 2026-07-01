@@ -7,18 +7,30 @@ const DEFAULT_ITEMS = [
     title: 'Signal score',
     description: 'Rank content by reach velocity, saves, replies, and sponsor fit.',
     id: 1,
+    metric: '94',
+    unit: '%',
+    label: 'confidence',
+    bars: [44, 68, 56, 84, 72],
     icon: <span className="carousel-icon-dot" />
   },
   {
     title: 'Lead ledger',
     description: 'Keep inbound sponsor messages and campaign stages in one view.',
     id: 2,
+    metric: '38',
+    unit: '',
+    label: 'open deals',
+    bars: [38, 52, 76, 61, 88],
     icon: <span className="carousel-icon-dot" />
   },
   {
     title: 'Revenue path',
     description: 'Connect post activity to invoices, payouts, and renewals.',
     id: 3,
+    metric: '$82K',
+    unit: '',
+    label: 'ready',
+    bars: [34, 48, 64, 80, 92],
     icon: <span className="carousel-icon-dot" />
   }
 ];
@@ -47,6 +59,20 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
     >
       <div className={`carousel-item-header ${round ? 'round' : ''}`}>
         <span className="carousel-icon-container">{item.icon}</span>
+      </div>
+      <div className="carousel-preview" aria-hidden="true">
+        <div className="carousel-preview-top">
+          <strong>
+            {item.metric}
+            {item.unit}
+          </strong>
+          <span>{item.label}</span>
+        </div>
+        <div className="carousel-preview-bars">
+          {(item.bars || [40, 62, 54, 80, 68]).map((height, barIndex) => (
+            <i key={`${item.id}-bar-${barIndex}`} style={{ height: `${height}%` }} />
+          ))}
+        </div>
       </div>
       <div className="carousel-item-content">
         <div className="carousel-item-title">{item.title}</div>

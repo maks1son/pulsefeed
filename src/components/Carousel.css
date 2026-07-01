@@ -35,21 +35,6 @@
   cursor: grab;
 }
 
-.carousel-item::before {
-  content: "";
-  position: absolute;
-  left: 34px;
-  right: 34px;
-  top: 128px;
-  height: 124px;
-  border-radius: 10px;
-  background:
-    linear-gradient(90deg, rgba(0, 91, 255, 0.22) 0 24%, transparent 24% 30%, rgba(0, 91, 255, 0.14) 30% 58%, transparent 58% 64%, rgba(0, 91, 255, 0.2) 64% 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(238, 248, 255, 0.92));
-  border: 1px solid rgba(0, 91, 255, 0.09);
-  pointer-events: none;
-}
-
 .carousel-item::after {
   content: "";
   position: absolute;
@@ -95,6 +80,61 @@
   height: 12px;
   border-radius: 999px;
   background: currentColor;
+}
+
+.carousel-preview {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 18px;
+  width: calc(100% - 56px);
+  min-height: 150px;
+  margin: 22px 28px 0;
+  padding: 18px;
+  border: 1px solid rgba(0, 91, 255, 0.1);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 82% 0%, rgba(0, 91, 255, 0.16), transparent 35%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(235, 247, 255, 0.94));
+}
+
+.carousel-preview-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.carousel-preview-top strong {
+  color: var(--ink);
+  font-size: 42px;
+  font-weight: 950;
+  line-height: 0.95;
+}
+
+.carousel-preview-top span {
+  padding: 7px 10px;
+  border-radius: var(--radius-pill);
+  color: var(--blue);
+  background: rgba(0, 91, 255, 0.09);
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.carousel-preview-bars {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  height: 76px;
+}
+
+.carousel-preview-bars i {
+  flex: 1;
+  min-width: 0;
+  border-radius: 8px 8px 3px 3px;
+  background:
+    linear-gradient(180deg, rgba(0, 91, 255, 0.48), rgba(0, 91, 255, 0.16));
 }
 
 .carousel-item-content {
@@ -175,10 +215,7 @@
   }
 
   .carousel-item::before {
-    left: 22px;
-    right: 22px;
-    top: 108px;
-    height: 92px;
+    display: none;
   }
 
   .carousel-icon-container {
@@ -188,5 +225,20 @@
 
   .carousel-item-content {
     padding: 0 22px 26px;
+  }
+
+  .carousel-preview {
+    width: calc(100% - 44px);
+    min-height: 124px;
+    margin: 18px 22px 0;
+    padding: 14px;
+  }
+
+  .carousel-preview-top strong {
+    font-size: 32px;
+  }
+
+  .carousel-preview-bars {
+    height: 58px;
   }
 }

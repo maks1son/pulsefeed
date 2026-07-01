@@ -21,30 +21,50 @@ const carouselItems = [
     id: 1,
     title: 'Signal score',
     description: 'Rank every post by reach velocity, saves, replies, and sponsor fit.',
+    metric: '94',
+    unit: '%',
+    label: 'confidence',
+    bars: [44, 68, 56, 84, 72],
     icon: <ChartLineUp className="carousel-icon" weight="bold" />
   },
   {
     id: 2,
     title: 'Lead ledger',
     description: 'Keep inbound sponsor demand, statuses, and owner notes in one place.',
+    metric: '38',
+    unit: '',
+    label: 'open deals',
+    bars: [38, 52, 76, 61, 88],
     icon: <Briefcase className="carousel-icon" weight="bold" />
   },
   {
     id: 3,
     title: 'Revenue path',
     description: 'Connect content activity to invoices, payments, renewals, and gaps.',
+    metric: '$82K',
+    unit: '',
+    label: 'ready',
+    bars: [34, 48, 64, 80, 92],
     icon: <Wallet className="carousel-icon" weight="bold" />
   },
   {
     id: 4,
     title: 'Audience shifts',
     description: 'Spot where subscribers came from and which topics moved them.',
+    metric: '+31',
+    unit: '%',
+    label: 'lift',
+    bars: [52, 42, 66, 74, 82],
     icon: <UsersThree className="carousel-icon" weight="bold" />
   },
   {
     id: 5,
     title: 'Clean exports',
     description: 'Send a sponsor-ready report without rebuilding slides by hand.',
+    metric: '7',
+    unit: '',
+    label: 'reports',
+    bars: [72, 72, 72, 72, 72],
     icon: <FileText className="carousel-icon" weight="bold" />
   }
 ];
@@ -144,13 +164,13 @@ function HeroDashboard() {
           <div className="dashboard-main">
             <div className="metric-row">
               <Metric label="Revenue ready" trend="+18% this week">
-                $<CountUp to={862000} separator="," duration={1.2} />
+                $862,000
               </Metric>
               <Metric label="Signal quality" trend="high confidence">
-                <CountUp to={94} duration={1.2} />%
+                94%
               </Metric>
               <Metric label="Open deals" trend="12 close-ready">
-                <CountUp to={38} duration={1.1} />
+                38
               </Metric>
             </div>
             <div className="chart-panel">
@@ -218,6 +238,14 @@ function WinCards() {
       <p className="section-copy">
         Bring your channel, lead, and invoice context into a single calm workflow.
       </p>
+
+      <div className="countup-feature" aria-label="Animated Pulsefeed revenue counter">
+        <span>Live revenue tracked</span>
+        <strong>
+          $<CountUp from={640000} to={862000} separator="," duration={1.1} />
+        </strong>
+        <p>One animated counter, kept as a deliberate proof point instead of noise across the page.</p>
+      </div>
 
       <div className="win-grid">
         <article className="win-card">
