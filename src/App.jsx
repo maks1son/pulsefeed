@@ -240,9 +240,10 @@ function WinCards() {
       </p>
 
       <div className="countup-feature" aria-label="Animated Pulsefeed revenue counter">
-        <span>Live revenue tracked</span>
+        <span className="countup-label">Live revenue tracked</span>
         <strong>
-          $<CountUp from={640000} to={862000} separator="," duration={1.1} />
+          <span className="currency">$</span>
+          <CountUp className="count-up-value" from={640000} to={862000} separator="," duration={1.1} />
         </strong>
         <p>One animated counter, kept as a deliberate proof point instead of noise across the page.</p>
       </div>

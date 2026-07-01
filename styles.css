@@ -592,18 +592,29 @@ h3 {
   box-shadow: 0 20px 58px rgba(26, 102, 159, 0.1);
 }
 
-.countup-feature span {
+.countup-feature .countup-label {
   color: var(--blue);
   font-size: 13px;
   font-weight: 900;
 }
 
 .countup-feature strong {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
   color: var(--ink);
   font-size: 58px;
   font-weight: 950;
   line-height: 0.96;
   white-space: nowrap;
+}
+
+.countup-feature .currency,
+.countup-feature .count-up-value {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 }
 
 .countup-feature p {
@@ -647,8 +658,11 @@ h3 {
 }
 
 .import-visual {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
   padding: 22px;
 }
 
@@ -687,7 +701,7 @@ h3 {
 }
 
 .import-visual button {
-  position: absolute;
+  position: static;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -701,10 +715,9 @@ h3 {
 }
 
 .import-avatars {
-  position: absolute;
-  bottom: 28px;
+  position: static;
   display: flex;
-  margin-left: 120px;
+  margin-left: 54px;
 }
 
 .import-avatars i {
