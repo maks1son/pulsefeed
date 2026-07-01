@@ -1,0 +1,17 @@
+{
+  "name": "pulsefeed-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.jsx --bundle --format=esm --jsx=automatic --loader:.js=jsx --loader:.jsx=jsx --outfile=assets/app.js --minify",
+    "watch": "esbuild src/main.jsx --bundle --format=esm --jsx=automatic --loader:.js=jsx --loader:.jsx=jsx --outfile=assets/app.js --watch"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "esbuild": "^0.25.5",
+    "motion": "^12.23.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}

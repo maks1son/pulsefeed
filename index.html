@@ -1,193 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pulsefeed - Telegram Analytics Infrastructure</title>
-  <meta name="description" content="Pulsefeed helps Telegram teams track, compare, and act on channel growth signals.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23020a18'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%235b7cff'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23c9ff3d'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#hero" aria-label="Pulsefeed home">
-      <span class="brand-icon" aria-hidden="true"></span>
-      <span>pulsefeed</span>
-    </a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#process">ABOUT PULSEFEED</a>
-      <a href="#tools">CONTACT US</a>
-    </nav>
-    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
-      <span></span>
-      <span></span>
-      <span class="sr-only">Open menu</span>
-    </button>
-  </header>
-
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <a href="#process">ABOUT PULSEFEED</a>
-    <a href="#tools">CONTACT US</a>
-  </nav>
-
-  <main>
-    <section class="hero" id="hero" aria-labelledby="hero-title">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-content reveal">
-        <h1 id="hero-title">Powering Telegram Teams with Signal Infrastructure</h1>
-        <p>Pulsefeed builds and supports the operational analytics layer behind your channel growth.</p>
-        <div class="chips" aria-label="Pulsefeed capabilities">
-          <span>growth</span>
-          <span>tracking</span>
-          <span>automation</span>
-          <span>dashboards</span>
-          <span>integrations</span>
-        </div>
-        <a class="primary-cta" href="#contact">CONTACT US</a>
-      </div>
-
-      <div class="hero-stage reveal" aria-label="Pulsefeed product preview">
-        <div class="phone-shell">
-          <div class="phone-header">
-            <span></span>
-            <span></span>
-          </div>
-          <div class="phone-chart">
-            <i style="--h:42%"></i>
-            <i style="--h:58%"></i>
-            <i style="--h:47%"></i>
-            <i style="--h:70%"></i>
-            <i style="--h:84%"></i>
-          </div>
-          <div class="phone-list">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-        <div class="float-card card-left">
-          <strong>Behind every launch</strong>
-          <p>signals, tags, and reports stitched into one channel system.</p>
-        </div>
-        <div class="float-card card-right">
-          <strong>Traffic source</strong>
-          <div class="donut"></div>
-        </div>
-        <div class="float-card card-bottom">
-          <strong>Channel rhythm</strong>
-          <p>daily read, weekly action, monthly clarity.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="process-panel" id="process" aria-labelledby="process-title">
-      <div class="panel-inner reveal">
-        <span class="mini-icon">PF</span>
-        <h2 id="process-title">Designed For Your Content Process, Not Templates</h2>
-        <p>We build around how your Telegram channel actually grows: launches, posts, traffic sources, retention, and follow-up decisions.</p>
-        <div class="process-orbit" aria-hidden="true">
-          <div class="orbit-core">PULSE<br>FEED</div>
-          <div class="orbit-card orbit-a">Pre-integrated channel stack</div>
-          <div class="orbit-card orbit-b">Operational logic, roles, and access</div>
-          <div class="orbit-card orbit-c">No manual reporting chaos</div>
-          <div class="orbit-card orbit-d">Signal mapping for every post</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="dark-section" id="tools" aria-labelledby="tools-title">
-      <div class="section-heading reveal">
-        <span class="section-icon">01</span>
-        <h2 id="tools-title">Operational Clarity Across Every Channel Tool</h2>
-        <p>Stay in control of your channel work: content, traffic, audience movement, access, and repeated growth decisions.</p>
-      </div>
-      <div class="clarity-grid reveal">
-        <article>
-          <h3>Role-based channel access</h3>
-          <p>Give editors, buyers, and analysts the right workspace.</p>
-        </article>
-        <article>
-          <h3>Workflow mappings</h3>
-          <p>Know what happens before and after every important post.</p>
-        </article>
-        <article>
-          <h3>System health visibility</h3>
-          <p>Watch reports, imports, and alerts without blind spots.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="spend-section" aria-labelledby="spend-title">
-      <div class="section-heading reveal">
-        <span class="section-icon">02</span>
-        <h2 id="spend-title">Smarter Promotion, Backed by Usage</h2>
-        <p>Stop pushing traffic into weak posts. See which content deserves budget and which one only looks active.</p>
-      </div>
-      <div class="spend-grid reveal">
-        <article class="blue-report">
-          <h3>Channel Usage Reports by Post, Source, and Role</h3>
-          <div class="report-chart" aria-hidden="true">
-            <span style="--h:40%"></span>
-            <span style="--h:72%"></span>
-            <span style="--h:52%"></span>
-            <span style="--h:86%"></span>
-            <span style="--h:64%"></span>
-          </div>
-          <div class="report-pills">
-            <span>31%</span>
-            <span>56%</span>
-            <span>4.6x</span>
-          </div>
-        </article>
-        <article class="check-card">
-          <h3>Detect redundant, inactive, or overpriced traffic.</h3>
-          <span></span>
-          <span></span>
-          <span></span>
-        </article>
-        <article class="decision-card">
-          <h3>Make informed choices before renewals and new placements.</h3>
-          <div class="decision-row good">approve</div>
-          <div class="decision-row hold">review</div>
-          <div class="decision-row stop">cut</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="connected-panel" aria-labelledby="connected-title">
-      <div class="connected-inner reveal">
-        <span class="mini-icon">03</span>
-        <h2 id="connected-title">Everything Your Channel Touches, Connected</h2>
-        <p>Pulsefeed turns scattered analytics into one operating layer for content, promotion, audience, and reporting.</p>
-        <div class="connected-grid">
-          <article>
-            <h3>Content signals</h3>
-            <p>Which topic moved the audience.</p>
-          </article>
-          <article>
-            <h3>Traffic sources</h3>
-            <p>Which placement actually paid off.</p>
-          </article>
-          <article>
-            <h3>Audience movement</h3>
-            <p>Where new readers came from.</p>
-          </article>
-          <article>
-            <h3>Team actions</h3>
-            <p>What to repeat, test, or stop.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="contact-card reveal">
-        <h2 id="contact-title">Build the analytics layer behind your Telegram growth.</h2>
-        <a class="primary-cta" href="mailto:hello@pulsefeed.io">CONTACT US</a>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pulsefeed turns Telegram channel activity, revenue, leads, and content signals into one clean operating layer."
+    />
+    <meta property="og:title" content="Pulsefeed - Telegram Signal Analytics" />
+    <meta
+      property="og:description"
+      content="Run your Telegram channels on signals, not guesswork."
+    />
+    <meta property="og:type" content="website" />
+    <title>Pulsefeed - Telegram Signal Analytics</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./assets/app.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./assets/app.js"></script>
+  </body>
 </html>
