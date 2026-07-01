@@ -1,7 +1,7 @@
 .carousel-container {
   position: relative;
   max-width: 100%;
-  height: 420px;
+  height: 520px;
   overflow: hidden;
   border: 1px solid rgba(7, 58, 96, 0.1);
   border-radius: var(--radius-large);
@@ -35,13 +35,28 @@
   cursor: grab;
 }
 
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  top: 128px;
+  height: 124px;
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, rgba(0, 91, 255, 0.22) 0 24%, transparent 24% 30%, rgba(0, 91, 255, 0.14) 30% 58%, transparent 58% 64%, rgba(0, 91, 255, 0.2) 64% 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(238, 248, 255, 0.92));
+  border: 1px solid rgba(0, 91, 255, 0.09);
+  pointer-events: none;
+}
+
 .carousel-item::after {
   content: "";
   position: absolute;
   right: -32px;
   top: -40px;
-  width: 140px;
-  height: 140px;
+  width: 172px;
+  height: 172px;
   border-radius: 999px;
   background: rgba(0, 91, 255, 0.1);
   filter: blur(3px);
@@ -55,13 +70,13 @@
 .carousel-item-header {
   position: relative;
   z-index: 1;
-  padding: 22px 22px 0;
+  padding: 28px 28px 0;
 }
 
 .carousel-icon-container {
   display: flex;
-  height: 42px;
-  width: 42px;
+  height: 56px;
+  width: 56px;
   align-items: center;
   justify-content: center;
   border-radius: 14px;
@@ -71,8 +86,8 @@
 }
 
 .carousel-icon {
-  height: 22px;
-  width: 22px;
+  height: 28px;
+  width: 28px;
 }
 
 .carousel-icon-dot {
@@ -85,14 +100,14 @@
 .carousel-item-content {
   position: relative;
   z-index: 1;
-  padding: 0 22px 24px;
+  padding: 0 30px 34px;
 }
 
 .carousel-item-title {
   margin-bottom: 10px;
   color: var(--ink);
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: 42px;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 0.96;
@@ -100,9 +115,9 @@
 
 .carousel-item-description {
   margin: 0;
-  max-width: 24ch;
+  max-width: 28ch;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
 }
 
@@ -146,7 +161,7 @@
 
 @media (max-width: 700px) {
   .carousel-container {
-    height: 360px;
+    height: 410px;
     border-radius: var(--radius-card);
     padding: 12px;
   }
@@ -156,6 +171,22 @@
   }
 
   .carousel-item-title {
-    font-size: 25px;
+    font-size: 30px;
+  }
+
+  .carousel-item::before {
+    left: 22px;
+    right: 22px;
+    top: 108px;
+    height: 92px;
+  }
+
+  .carousel-icon-container {
+    width: 48px;
+    height: 48px;
+  }
+
+  .carousel-item-content {
+    padding: 0 22px 26px;
   }
 }

@@ -78,11 +78,11 @@ const faqs = [
 ];
 
 function useCarouselWidth() {
-  const [width, setWidth] = useState(430);
+  const [width, setWidth] = useState(560);
 
   useEffect(() => {
     const update = () => {
-      setWidth(Math.min(430, Math.max(292, window.innerWidth - 40)));
+      setWidth(Math.min(560, Math.max(318, window.innerWidth - 36)));
     };
 
     update();
@@ -113,11 +113,12 @@ function Header() {
   );
 }
 
-function Metric({ label, children }) {
+function Metric({ label, trend, children }) {
   return (
     <div className="metric">
       <span>{label}</span>
       <strong>{children}</strong>
+      <em>{trend}</em>
     </div>
   );
 }
@@ -142,33 +143,65 @@ function HeroDashboard() {
           </aside>
           <div className="dashboard-main">
             <div className="metric-row">
-              <Metric label="Revenue ready">
+              <Metric label="Revenue ready" trend="+18% this week">
                 $<CountUp to={862000} separator="," duration={1.2} />
               </Metric>
-              <Metric label="Signal quality">
+              <Metric label="Signal quality" trend="high confidence">
                 <CountUp to={94} duration={1.2} />%
               </Metric>
-              <Metric label="Open deals">
+              <Metric label="Open deals" trend="12 close-ready">
                 <CountUp to={38} duration={1.1} />
               </Metric>
             </div>
-            <div className="line-chart" aria-hidden="true">
-              <svg viewBox="0 0 520 170" role="img" aria-label="Telegram growth chart">
-                <path className="chart-grid" d="M10 136 H510 M10 96 H510 M10 56 H510" />
-                <path
-                  className="chart-fill"
-                  d="M16 130 L82 96 L146 116 L208 78 L272 90 L334 42 L402 76 L502 58 L502 150 L16 150 Z"
-                />
-                <path className="chart-line" d="M16 130 L82 96 L146 116 L208 78 L272 90 L334 42 L402 76 L502 58" />
-              </svg>
+            <div className="chart-panel">
+              <div className="chart-copy">
+                <strong>Post revenue signal</strong>
+                <span>Last 14 days</span>
+              </div>
+              <div className="line-chart" aria-hidden="true">
+                <svg viewBox="0 0 640 210" role="img" aria-label="Telegram growth chart">
+                  <path className="chart-grid" d="M30 170 H610 M30 124 H610 M30 78 H610 M30 32 H610" />
+                  <path
+                    className="chart-fill"
+                    d="M38 166 L98 130 L156 146 L216 92 L276 112 L336 62 L396 78 L456 34 L516 88 L604 58 L604 190 L38 190 Z"
+                  />
+                  <path className="chart-line-muted" d="M38 150 L98 142 L156 118 L216 126 L276 100 L336 104 L396 76 L456 86 L516 72 L604 82" />
+                  <path className="chart-line" d="M38 166 L98 130 L156 146 L216 92 L276 112 L336 62 L396 78 L456 34 L516 88 L604 58" />
+                  {[38, 98, 156, 216, 276, 336, 396, 456, 516, 604].map((x, index) => {
+                    const y = [166, 130, 146, 92, 112, 62, 78, 34, 88, 58][index];
+                    return <circle className="chart-dot" key={x} cx={x} cy={y} r="5" />;
+                  })}
+                </svg>
+                <div className="chart-labels">
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                  <span>Today</span>
+                </div>
+              </div>
+              <aside className="chart-aside">
+                <div>
+                  <span>Top source</span>
+                  <strong>Partner post</strong>
+                  <em>+29%</em>
+                </div>
+                <div>
+                  <span>Next action</span>
+                  <strong>Reply to 7 leads</strong>
+                  <em>today</em>
+                </div>
+              </aside>
             </div>
             <div className="mini-table">
-              <span>Top signal</span>
-              <span>Post launch guide</span>
+              <span>Launch guide</span>
+              <span>Best posting window</span>
               <strong>+41%</strong>
               <span>Sponsor fit</span>
-              <span>Fintech tools</span>
+              <span>Fintech and AI tools</span>
               <strong>$14,200</strong>
+              <span>Needs reply</span>
+              <span>Seven warm lead messages</span>
+              <strong>today</strong>
             </div>
           </div>
         </div>
@@ -189,9 +222,26 @@ function WinCards() {
       <div className="win-grid">
         <article className="win-card">
           <div className="card-visual import-visual">
-            <div className="import-line" />
+            <div className="import-board">
+              <div className="import-row active">
+                <span />
+                <strong>Audience tags</strong>
+              </div>
+              <div className="import-row">
+                <span />
+                <strong>Sponsor notes</strong>
+              </div>
+              <div className="import-row">
+                <span />
+                <strong>Lead history</strong>
+              </div>
+            </div>
             <button type="button">Import</button>
-            <div className="import-line short" />
+            <div className="import-avatars">
+              <i />
+              <i />
+              <i />
+            </div>
           </div>
           <h3>Bring your clients with you</h3>
           <p>Import your existing leads, channel tags, and sponsor notes in minutes.</p>
@@ -200,14 +250,14 @@ function WinCards() {
         <article className="win-card">
           <div className="card-visual invoice-visual">
             <span className="bubble-index">2</span>
-            <strong>
-              $<CountUp to={20000} separator="," duration={1.3} />
-            </strong>
-            <div className="invoice-lines">
+            <div className="invoice-sheet">
+              <span>Invoice ready</span>
+              <strong>$20,000</strong>
               <i />
               <i />
               <i />
             </div>
+            <em>Send</em>
           </div>
           <h3>Send your first invoice</h3>
           <p>Create sponsor invoices or post packages without opening a second tool.</p>
@@ -215,9 +265,7 @@ function WinCards() {
 
         <article className="win-card">
           <div className="card-visual growth-visual">
-            <strong>
-              $<CountUp to={95000} separator="," duration={1.5} />
-            </strong>
+            <strong>$95,000</strong>
             <div className="growth-axis">
               <span style={{ height: '28%' }} />
               <span style={{ height: '44%' }} />
@@ -247,6 +295,42 @@ function ProductRow({ title, copy, variant, icon }) {
 }
 
 function ProductWindow({ icon, variant }) {
+  const data = {
+    pipeline: {
+      title: 'Warm sponsor pipeline',
+      meta: '12 active conversations',
+      stat: '$48,600',
+      statLabel: 'forecast this month',
+      cards: [
+        ['New lead', '8'],
+        ['Proposal', '5'],
+        ['Booked', '3']
+      ]
+    },
+    projects: {
+      title: 'Campaign delivery board',
+      meta: 'Owners and deadlines synced',
+      stat: '94%',
+      statLabel: 'tasks on schedule',
+      cards: [
+        ['Draft', '6'],
+        ['Review', '4'],
+        ['Live', '9']
+      ]
+    },
+    payments: {
+      title: 'Invoice and payment queue',
+      meta: 'No chasing in chat history',
+      stat: '$82,142',
+      statLabel: 'ready for approval',
+      cards: [
+        ['Sent', '$18K'],
+        ['Due', '$12K'],
+        ['Paid', '$52K']
+      ]
+    }
+  }[variant];
+
   return (
     <div className={`product-window row-window ${variant}`}>
       <div className="window-bar">
@@ -262,16 +346,24 @@ function ProductWindow({ icon, variant }) {
         </div>
         <div className="row-window-content">
           <div className="window-icon">{icon}</div>
-          <div className="window-list">
-            <span />
-            <span />
-            <span />
+          <div className="window-summary">
+            <strong>{data.title}</strong>
+            <span>{data.meta}</span>
+          </div>
+          <div className="window-cards">
+            {data.cards.map(item => (
+              <div key={item[0]}>
+                <span>{item[0]}</span>
+                <strong>{item[1]}</strong>
+              </div>
+            ))}
           </div>
           <div className="window-panel">
-            <strong>
-              $<CountUp to={82142} separator="," duration={1.2} />
-            </strong>
-            <p>Ready for approval</p>
+            <strong>{data.stat}</strong>
+            <p>{data.statLabel}</p>
+            <div className="window-progress">
+              <span style={{ width: '82%' }} />
+            </div>
           </div>
         </div>
       </div>
